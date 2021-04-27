@@ -1,5 +1,5 @@
 interface Client {
-  get(url: string): Promise<any>;
+  get<T = any>(url: string): Promise<T>;
 }
 
 export default Client;

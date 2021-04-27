@@ -4,7 +4,7 @@ import Record from './Record';
 // API documentation
 // https://metmuseum.github.io/
 
-class Records {
+class RecordsApi {
   client: Client;
 
   constructor(client: Client) {
@@ -18,4 +18,4 @@ class Records {
   }
 }
 
-export default Records;
+export default RecordsApi;
