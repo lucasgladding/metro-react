@@ -1,4 +1,4 @@
-interface ArtistAttributes {
+interface Attributes {
   role: string;
   name: string;
   bio: string;
@@ -6,19 +6,19 @@ interface ArtistAttributes {
   death?: number;
 }
 
-class Artist implements ArtistAttributes {
+class Artist implements Attributes {
   role: string;
   name: string;
   bio: string;
   birth: number;
   death?: number;
 
-  constructor(data: ArtistAttributes) {
-    this.role = data.role;
-    this.name = data.name;
-    this.bio = data.bio;
-    this.birth = data.birth;
-    this.death = data.death;
+  constructor(attributes: Attributes) {
+    this.role = attributes.role;
+    this.name = attributes.name;
+    this.bio = attributes.bio;
+    this.birth = attributes.birth;
+    this.death = attributes.death;
   }
 
   get isDead(): boolean {

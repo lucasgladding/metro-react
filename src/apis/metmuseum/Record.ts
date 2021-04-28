@@ -1,23 +1,23 @@
 import Artist from './Artist';
 
-interface RecordAttributes {
+interface Attributes {
   id: number;
   title: string;
   artist: Artist;
   updated: Date;
 }
 
-class Record implements RecordAttributes {
+class Record implements Attributes {
   id: number;
   title: string;
   artist: Artist;
   updated: Date;
 
-  constructor({ id, title, artist, updated }: RecordAttributes) {
-    this.id = id;
-    this.title = title
-    this.artist = artist;
-    this.updated = updated;
+  constructor(attributes: Attributes) {
+    this.id = attributes.id;
+    this.title = attributes.title
+    this.artist = attributes.artist;
+    this.updated = attributes.updated;
   }
 
   static decodeJSON(data: any): Record {
@@ -28,8 +28,8 @@ class Record implements RecordAttributes {
         role: data.artistRole,
         name: data.artistDisplayName,
         bio: data.artistDisplayBio,
-        birth: data.artistBeginDate,
-        death: data.artistEndDate,
+        birth: +data.artistBeginDate,
+        death: data.artistEndDate ? +data.artistEndDate : undefined,
       }),
       updated: new Date(data.metadataDate),
     });
