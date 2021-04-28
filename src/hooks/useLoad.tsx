@@ -9,6 +9,7 @@ const useLoad = () => {
   async function load<T = any>(cb: Callback<T>): Promise<T | undefined> {
     try {
       setLoading(true);
+      setError(undefined);
       const response = await cb();
       setLoading(false);
       return response;
