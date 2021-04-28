@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import IRecordsApi from '../apis/metmuseum/IRecordsApi';
 import Record from '../apis/metmuseum/Record';
 import RecordsApi from '../apis/metmuseum/RecordsApi';
 import FetchClient from '../clients/FetchClient';
@@ -7,7 +6,7 @@ import useLoad from '../hooks/useLoad';
 import Loader from './Loader';
 
 interface GetRecordProps {
-  api?: IRecordsApi;
+  api?: RecordsApi;
   id: number;
 }
 
@@ -29,7 +28,7 @@ const GetRecord: React.FC<GetRecordProps> = (props) => {
   }, []);
 
   return (
-    <Loader data-testid="loader" loading={loading} error={error}>
+    <Loader loading={loading} error={error}>
       <div>{record?.title}</div>
     </Loader>
   );

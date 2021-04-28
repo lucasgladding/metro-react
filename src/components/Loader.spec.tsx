@@ -11,7 +11,6 @@ describe('Loader', () => {
         <div>{contents}</div>
       </Loader>
     );
-
     expect(screen.queryByTestId('loading-text')).not.toBeInTheDocument();
     expect(screen.queryByTestId('error-text')).not.toBeInTheDocument();
     expect(screen.queryByText(contents)).toBeInTheDocument();
@@ -23,7 +22,6 @@ describe('Loader', () => {
         <div>{contents}</div>
       </Loader>
     );
-
     expect(screen.queryByTestId('loading-text')).toBeInTheDocument();
     expect(screen.queryByTestId('error-text')).not.toBeInTheDocument();
     expect(screen.queryByText(contents)).not.toBeInTheDocument();
@@ -36,7 +34,6 @@ describe('Loader', () => {
         <div>{contents}</div>
       </Loader>
     );
-
     expect(screen.queryByTestId('loading-text')).not.toBeInTheDocument();
     expect(screen.queryByText(error.message)).toBeInTheDocument();
     expect(screen.queryByText(contents)).not.toBeInTheDocument();

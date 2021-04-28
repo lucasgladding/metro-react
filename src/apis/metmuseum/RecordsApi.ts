@@ -1,11 +1,10 @@
 import Client from '../../clients/Client';
-import IRecordsApi from './IRecordsApi';
 import Record from './Record';
 
 // API documentation
 // https://metmuseum.github.io/
 
-class RecordsApi implements IRecordsApi {
+class RecordsApi {
   client: Client;
 
   constructor(client: Client) {

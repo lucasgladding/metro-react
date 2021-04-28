@@ -12,7 +12,6 @@ describe('Get record', () => {
       get: () => Promise.resolve(fixture),
     });
     render(<GetRecord api={api} id={id} />);
-
     expect(await screen.findByText(fixture.title)).toBeInTheDocument();
   });
 
@@ -22,7 +21,6 @@ describe('Get record', () => {
       get: () => Promise.reject(error),
     });
     render(<GetRecord api={api} id={id} />);
-
     expect(await screen.findByText(error.message)).toBeInTheDocument();
   });
 });

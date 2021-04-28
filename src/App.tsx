@@ -3,7 +3,7 @@ import GetRecord from './components/GetRecord';
 
 function App() {
   return (
-    <GetRecord />
+    <GetRecord id={45734} />
   );
 }
 

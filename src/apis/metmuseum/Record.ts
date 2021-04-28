@@ -22,7 +22,7 @@ class Record implements RecordAttributes {
 
   static decodeJSON(data: any): Record {
     return new Record({
-      id: data.id,
+      id: data.objectID,
       title: data.title,
       artist: new Artist({
         role: data.artistRole,
