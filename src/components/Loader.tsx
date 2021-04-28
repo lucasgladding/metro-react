@@ -2,18 +2,18 @@ import React from 'react';
 
 interface LoaderProps {
   loading: boolean;
-  error: Error | undefined;
+  error?: Error | undefined;
 }
 
 const Loader: React.FC<LoaderProps> = ({ children, error, loading }) => {
   if (loading) {
     return (
-      <div>Loading...</div>
+      <div data-testid="loading-text">Loading...</div>
     );
   }
   if (error) {
     return (
-      <div>{error.message}</div>
+      <div data-testid="error-text">{error.message}</div>
     );
   }
   return (

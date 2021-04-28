@@ -1,18 +1,25 @@
 import React, {useEffect, useState} from 'react';
+import IRecordsApi from '../apis/metmuseum/IRecordsApi';
 import Record from '../apis/metmuseum/Record';
 import RecordsApi from '../apis/metmuseum/RecordsApi';
 import FetchClient from '../clients/FetchClient';
-import useApiLoad from '../hooks/useApiLoad';
+import useLoad from '../hooks/useLoad';
 import Loader from './Loader';
 
-const GetRecord: React.FC = () => {
+interface GetRecordProps {
+  api?: IRecordsApi;
+  id: number;
+}
+
+const GetRecord: React.FC<GetRecordProps> = (props) => {
   const [record, setRecord] = useState<Record | undefined>(undefined);
-  const { load, loading, error } = useApiLoad();
+  const { load, loading, error } = useLoad();
+
+  const api = props.api ?? new RecordsApi(new FetchClient());
 
   async function init() {
     const response = await load(async () => {
-      const service = new RecordsApi(new FetchClient());
-      return service.get(45734);
+      return api.get(props.id);
     });
     setRecord(response);
   }
@@ -22,7 +29,7 @@ const GetRecord: React.FC = () => {
   }, []);
 
   return (
-    <Loader loading={loading} error={error}>
+    <Loader data-testid="loader" loading={loading} error={error}>
       <div>{record?.title}</div>
     </Loader>
   );

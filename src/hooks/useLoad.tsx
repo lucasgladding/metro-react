@@ -1,8 +1,8 @@
 import React from 'react';
 
-type Callback<T = any> = () => Promise<T | undefined>
+type Callback<T = any> = () => Promise<T>
 
-const useApiLoad = () => {
+const useLoad = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<Error | undefined>(undefined);
 
@@ -22,4 +22,4 @@ const useApiLoad = () => {
   return { load, loading, error };
 };
 
-export default useApiLoad;
+export default useLoad;
