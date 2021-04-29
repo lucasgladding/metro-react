@@ -1,15 +1,15 @@
 import {render, screen} from '@testing-library/react';
 import React from 'react';
-import Loader from './Loader';
+import Loadable from './Loadable';
 
-describe('Loader', () => {
+describe('Loadable', () => {
   const contents = 'contents';
 
   it('renders the contents when loaded', () => {
     render(
-      <Loader loading={false}>
+      <Loadable loading={false}>
         <div>{contents}</div>
-      </Loader>
+      </Loadable>
     );
     expect(screen.queryByTestId('loading-text')).not.toBeInTheDocument();
     expect(screen.queryByTestId('error-text')).not.toBeInTheDocument();
@@ -18,9 +18,9 @@ describe('Loader', () => {
 
   it('renders the loading text with a loading prop', () => {
     render(
-      <Loader loading={true}>
+      <Loadable loading={true}>
         <div>{contents}</div>
-      </Loader>
+      </Loadable>
     );
     expect(screen.queryByTestId('loading-text')).toBeInTheDocument();
     expect(screen.queryByTestId('error-text')).not.toBeInTheDocument();
@@ -30,9 +30,9 @@ describe('Loader', () => {
   it('renders the error text with an error prop', () => {
     const error = new Error('Could not load');
     render(
-      <Loader loading={false} error={error}>
+      <Loadable loading={false} error={error}>
         <div>{contents}</div>
-      </Loader>
+      </Loadable>
     );
     expect(screen.queryByTestId('loading-text')).not.toBeInTheDocument();
     expect(screen.queryByText(error.message)).toBeInTheDocument();

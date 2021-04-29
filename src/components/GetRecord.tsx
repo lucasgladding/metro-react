@@ -3,7 +3,7 @@ import Record from '../apis/metmuseum/Record';
 import RecordsApi from '../apis/metmuseum/RecordsApi';
 import FetchClient from '../clients/FetchClient';
 import useLoad from '../hooks/useLoad';
-import Loader from './Loader';
+import Loadable from './Loadable';
 
 interface GetRecordProps {
   api?: RecordsApi;
@@ -28,9 +28,9 @@ const GetRecord: React.FC<GetRecordProps> = (props) => {
   }, []);
 
   return (
-    <Loader loading={loading} error={error}>
+    <Loadable loading={loading} error={error}>
       <div>{record?.title}</div>
-    </Loader>
+    </Loadable>
   );
 };
 

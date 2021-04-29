@@ -5,7 +5,7 @@ interface LoaderProps {
   error?: Error | undefined;
 }
 
-const Loader: React.FC<LoaderProps> = ({ children, error, loading }) => {
+const Loadable: React.FC<LoaderProps> = ({ children, error, loading }) => {
   if (loading) {
     return (
       <div data-testid="loading-text">Loading...</div>
@@ -21,4 +21,4 @@ const Loader: React.FC<LoaderProps> = ({ children, error, loading }) => {
   );
 }
 
-export default Loader;
+export default Loadable;
