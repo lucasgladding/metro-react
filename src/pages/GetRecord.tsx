@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Record from '../apis/metmuseum/Record';
 import RecordsApi from '../apis/metmuseum/RecordsApi';
 import FetchClient from '../clients/FetchClient';
+import Loadable from '../components/Loadable';
 import useLoad from '../hooks/useLoad';
-import Loadable from './Loadable';
 
 interface GetRecordProps {
   api?: RecordsApi;
@@ -17,19 +17,21 @@ const GetRecord: React.FC<GetRecordProps> = (props) => {
   const api = props.api ?? new RecordsApi(new FetchClient());
 
   async function init() {
-    const response = await load(async () => {
+    setRecord(await load(async () => {
       return api.get(props.id);
-    });
-    setRecord(response);
+    }));
   }
 
   useEffect(() => {
     init();
-  }, []);
+  }, [props.id]);
 
   return (
     <Loadable loading={loading} error={error}>
       <div>{record?.title}</div>
+      <div>{record?.artist.name}</div>
+      <div><img src={record?.image} width={200} /></div>
+      <div><a href={record?.url}>More Info</a></div>
     </Loadable>
   );
 };

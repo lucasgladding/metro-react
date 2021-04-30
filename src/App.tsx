@@ -1,5 +1,5 @@
 import React from 'react';
-import GetRecord from './components/GetRecord';
+import GetRecord from './pages/GetRecord';
 
 function App() {
   return (
